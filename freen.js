@@ -128,31 +128,40 @@ setInterval(createHeart,400);
    Music Player
 ========================== */
 
-const audio =
-document.getElementById("audio");
+const audio = document.getElementById("audio");
+const playButton = document.getElementById("playMusic");
 
-const playButton =
-document.getElementById("playMusic");
+if(playButton && audio){
 
-playButton.addEventListener("click",()=>{
+    playButton.addEventListener("click",()=>{
 
-    if(audio.paused){
+        if(audio.paused){
 
-        audio.play();
+            audio.play();
 
-        playButton.innerHTML =
-        `<i class="fa-solid fa-pause"></i> Pause Music`;
+            playButton.innerHTML =
+            `<i class="fa-solid fa-pause"></i> Pause Music`;
 
-    }else{
+        }else{
 
-        audio.pause();
+            audio.pause();
+
+            playButton.innerHTML =
+            `<i class="fa-solid fa-music"></i> Play Music`;
+
+        }
+
+    });
+
+
+    audio.addEventListener("ended",()=>{
 
         playButton.innerHTML =
         `<i class="fa-solid fa-music"></i> Play Music`;
 
-    }
+    });
 
-});
+}
 
 audio.addEventListener("ended",()=>{
 
@@ -200,25 +209,6 @@ topBtn.addEventListener("click",()=>{
    Smooth Navigation
 ========================== */
 
-document.querySelectorAll('nav a').forEach(anchor => {
-
-    anchor.addEventListener('click', function (e) {
-
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute('href'));
-
-        if(target){
-
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-
-    });
-
-});
 
 
 /* ==========================
@@ -262,6 +252,143 @@ revealElements.forEach(el=>{
 });
 
 
+
+
+/* ==========================
+   FIREBASE MESSAGE SYSTEM
+========================== */
+
+
+const sendMessageBtn = document.getElementById("sendMessage");
+
+const messageList = document.getElementById("messageList");
+
+
+if(sendMessageBtn){
+
+
+sendMessageBtn.addEventListener("click", async ()=>{
+
+
+    const name =
+    document.getElementById("name").value.trim();
+
+
+    const country =
+    document.getElementById("country").value.trim();
+
+
+    const message =
+    document.getElementById("message").value.trim();
+
+
+
+    if(name === "" || country === "" || message === ""){
+
+        alert("Please fill up all fields 💜");
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        await db.collection("messages").add({
+
+            name:name,
+
+            country:country,
+
+            message:message,
+
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+
+        });
+
+
+
+        alert("Message sent successfully 💜");
+
+
+        document.getElementById("name").value="";
+        document.getElementById("country").value="";
+        document.getElementById("message").value="";
+
+
+    }
+    catch(error){
+
+        console.log(error);
+
+        alert("Error sending message");
+
+    }
+
+
+});
+
+
+}
+
+
+
+/* ==========================
+   SHOW FAN MESSAGES
+========================== */
+
+
+if(messageList){
+
+
+db.collection("messages")
+.orderBy("createdAt","desc")
+.onSnapshot(snapshot=>{
+
+
+    messageList.innerHTML="";
+
+
+    snapshot.forEach(doc=>{
+
+
+        const data = doc.data();
+
+
+        messageList.innerHTML += `
+
+        <div class="message-card">
+
+            <h3>
+            ${data.name}
+            </h3>
+
+
+            <span>
+            ${data.country}
+            </span>
+
+
+            <p>
+            ${data.message}
+            </p>
+
+
+        </div>
+
+        `;
+
+
+    });
+
+
+});
+
+
+}
+
 /* ==========================
    Placeholder
    (Part 3B)
@@ -275,12 +402,18 @@ function startConfetti(){
 
 function showSection(id){
 
-    // Hide all pages
-    document.querySelectorAll(".page").forEach(page=>{
+    document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active");
     });
 
-    // Show selected page
-    document.getElementById(id).classList.add("active");
+    const target = document.getElementById(id);
 
+    if(target){
+        target.classList.add("active");
+    }
+
+    window.scrollTo(0,0);
 }
+        
+
+

@@ -49,110 +49,64 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <div class="logo">💜 Happy Birthday Freen</div>
 
     <ul>
-        <li><a href="#" onclick="showSection('home')">Home</a></li>
-        <li><a href="#" onclick="showSection('journey')">Journey</a></li>
-        <li><a href="#" onclick="showSection('gallery')">Gallery</a></li>
-        <li><a href="#" onclick="showSection('messages')">Messages</a></li>
+        <li><a href="javascript:void(0)" onclick="showSection('home')">Home</a></li>
+        <li><a href="javascript:void(0)" onclick="showSection('journey')">Journey</a></li>
+        <li><a href="javascript:void(0)" onclick="showSection('gallery')">Gallery</a></li>
+        <li><a href="javascript:void(0)" onclick="showSection('messages')">Messages</a></li>
     </ul>
 
 </nav>
-</header>
 
 </header>
 
 <section id="home" class="hero page active">
 
-<div class="hero-left">
+    <div class="hero-left">
 
-<h3>August 8, 2026 🎂</h3>
+        <h3>August 8, 2026 🎂</h3>
 
-<h1>
+        <h1>
+            Happy Birthday
+            <span>Freen Sarocha</span>
+        </h1>
 
-Happy Birthday
+        <p>
+            Thank you for inspiring millions of fans around
+            the world with your talent, kindness,
+            beautiful smile, and hard work.
 
-<span>Freen Sarocha</span>
+            May this year bring you more happiness,
+            good health, success, and unforgettable memories.
 
-</h1>
+            Happy Birthday! 💜
+        </p>
 
-<p>
+        <div id="countdown">
+            ...
+        </div>
 
-Thank you for inspiring millions of fans around
-the world with your talent, kindness,
-beautiful smile, and hard work.
+        <div class="buttons">
 
-May this year bring you more happiness,
-good health, success, and unforgettable memories.
+            <button id="playMusic">
+                <i class="fa-solid fa-music"></i>
+                Play Music
+            </button>
 
-Happy Birthday! 💜
+            <button type="button" onclick="showSection('messages'); return false;">
+                Leave a Message
+            </button>
 
-</p>
+        </div>
 
-<div id="countdown">
+    </div>
 
-<div>
 
-<h2 id="days">00</h2>
+    <div class="hero-right">
 
-<span>Days</span>
+        <img src="P'freen/freeny.jpeg" alt="Freen">
 
-</div>
+    </div>
 
-<div>
-
-<h2 id="hours">00</h2>
-
-<span>Hours</span>
-
-</div>
-
-<div>
-
-<h2 id="minutes">00</h2>
-
-<span>Minutes</span>
-
-</div>
-
-<div>
-
-<h2 id="seconds">00</h2>
-
-<span>Seconds</span>
-
-</div>
-
-</div>
-
-<div class="buttons">
-
-<button id="playMusic">
-
-<i class="fa-solid fa-music"></i>
-
-Play Music
-
-</button>
-
-<a href="#messages">
-
-<button>
-
-Leave a Message
-
-</button>
-
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-right">
-
-<img src="P'freen/freeny.jpeg"
-alt="Freen">
-
-</div>
 
 </section>
 
@@ -419,8 +373,6 @@ by fans around the world.
 <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
 
 <script src="firebase-config.js"></script>
-
-<script src="firebase.js"></script>
 
 <script src="freen.js"></script>
 
