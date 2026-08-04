@@ -272,3 +272,15 @@ function startConfetti(){
     console.log("Confetti starts...");
 
 }
+
+function showSection(id){
+
+    // Hide all pages
+    document.querySelectorAll(".page").forEach(page=>{
+        page.classList.remove("active");
+    });
+
+    // Show selected page
+    document.getElementById(id).classList.add("active");
+
+}

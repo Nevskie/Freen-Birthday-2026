@@ -1071,3 +1071,14 @@ section {
 #loader {
     display: none;
 }
+
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 120px 8%;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+}
