@@ -1023,3 +1023,51 @@ Responsive
     }
 
 }
+
+.hero,
+#journey,
+#gallery,
+#messages {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 100px 8%;
+
+}
+
+header {
+
+    position: fixed;
+
+    top: 0;
+
+    width: 100%;
+
+    z-index: 999;
+
+}
+
+section {
+
+    scroll-margin-top: 90px;
+
+}
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+#loader {
+    display: none;
+}
